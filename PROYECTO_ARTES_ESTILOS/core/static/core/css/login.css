@@ -1,0 +1,156 @@
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.wrapper {
+    width: 80%;
+    max-width: 1000px;
+    height: 550px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+}
+
+/* Contenedor del Formulario (Lado Izquierdo) */
+.container {
+    width: 50%;
+    background-color: #3A2C42;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 350px;
+}
+
+.title {
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.inp {
+    margin-bottom: 20px;
+}
+
+/* Estilos de Campos de Entrada y Select */
+.input, #login-rol, #register-rol {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    background-color: #3A2C42; 
+    color: #FFFFFF;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input::placeholder {
+    color: #D0D0D0;
+}
+
+.input:focus {
+    border-color: #E76F8E;
+}
+
+/* Estilos específicos para el Select */
+select.input {
+    appearance: none;
+    -webkit-appearance: none;
+    /* Icono SVG para la flecha del select (color blanco) */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="white"><polygon points="0,0 10,0 5,10"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+#login-rol option, #register-rol option {
+    background-color: #3A2C42; 
+    color: #FFFFFF;
+}
+
+/* Estilos del Botón de Enviar (Submit) */
+.submit {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    margin-top: 10px;
+
+    /* Gradiente para el color del botón */
+    background: linear-gradient(90deg, #F4BCC8 0%, #B8E0D2 100%);
+    color: #3A2C42; 
+}
+
+.submit:hover {
+    /* Cambio de gradiente al pasar el ratón */
+    background: linear-gradient(90deg, #B8E0D2 0%, #F4BCC8 100%);
+    box-shadow: 0 4px 10px rgba(220, 150, 180, 0.5);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #FFFFFF; 
+    font-size: 0.9em;
+}
+
+/* Estilos del Enlace de Registro/Login */
+.link {
+    color: #E76F8E;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: #F4BCC8;
+}
+
+/* Banner (Lado Derecho) */
+.banner {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+
+    /* Gradiente para el color del banner */
+    background: linear-gradient(135deg, #2E8B57 0%, #E76F8E 100%);
+    color: #FFFFFF;
+}
+
+.wel_text {
+    font-size: 3.5em;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.para {
+    font-size: 1.5em;
+    line-height: 1.4;
+}
+
+/* Clase para ocultar el formulario de registro inicialmente */
+.register-form {
+    display: none;
+}
