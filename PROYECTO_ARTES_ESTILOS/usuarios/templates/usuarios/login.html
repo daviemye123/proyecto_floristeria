@@ -1,0 +1,61 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}ARTES & ESTILOS | Inicio de Sesión{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'usuario/css/login.css' %}">
+<link rel="icon" href="{% static 'imagenes/IconoRosa.png' %}" type="image/x-icon">
+{% endblock %}
+
+{% block content %}
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row shadow rounded-4 overflow-hidden w-75">
+        <div class="col-md-6 bg-white p-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <h2 class="fw-bold mb-4 text-center">Inicio de Sesión</h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Usuario</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    {{ form.password }}
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+            </form>
+
+            <p class="text-center mt-3">
+                ¿No tienes cuenta?
+                <a href="{% url 'usuarios:registro' %}">Regístrate</a>
+            </p>
+        </div>
+
+        <div class="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center text-white" style="background: linear-gradient(135deg, #c2185b, #8e24aa);">
+            <h1 class="fw-bold">BIENVENIDO</h1>
+            <p class="text-center">Gestión Floral<br>Artes & Estilos</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'usuario/js/login.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'usuario/css/login.css' %}">
+{% endblock %}

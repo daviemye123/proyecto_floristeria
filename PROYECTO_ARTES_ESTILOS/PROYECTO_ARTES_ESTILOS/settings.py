@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "core",
     "bootstrap5",
     "usuarios",
+    "venta",
+    "persona",
 ]
 
 MIDDLEWARE = [

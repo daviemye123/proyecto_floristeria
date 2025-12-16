@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Persona - Gestión de Personas y Roles</title>
+</head>
+<body>
+
+    <h1>Registro de Nueva Persona</h1>
+    <form action="/api/personas" method="POST">
+
+        <fieldset>
+            <legend>Datos de Identificación</legend>
+
+            <p>
+                <label for="tipo_documento">Tipo de Documento:</label>
+                <select id="tipo_documento" name="tipo_documento" required>
+                    <option value="">-- Seleccione --</option>
+                    <option value="CC">Cédula de Ciudadanía (CC)</option>
+                    <option value="CE">Cédula de Extranjería (CE)</option>
+                    <option value="NIT">NIT (Identificación Tributaria)</option>
+                    <option value="PA">Pasaporte (PA)</option>
+                </select>
+            </p>
+            <p>
+                <label for="documento">Número de Documento:</label>
+                <input type="text" id="documento" name="documento" maxlength="20" required>
+            </p>
+
+            <p>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" maxlength="100" required>
+            </p>
+            <p>
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" maxlength="100" required>
+            </p>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Contacto y Ubicación</legend>
+
+            <p>
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" maxlength="20" placeholder="Ej: +57 300 123 4567">
+            </p>
+            <p>
+                <label for="correo_electronico">Correo Electrónico:</label>
+                <input type="email" id="correo_electronico" name="correo_electronico" maxlength="100" required>
+            </p>
+            <p>
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" maxlength="255" required>
+            </p>
+            
+            <p>
+                <label for="departamento">Departamento:</label>
+                <input type="text" id="departamento" name="departamento" maxlength="45" required>
+            </p>
+            <p>
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad" maxlength="45" required>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Rol y Estado del Sistema</legend>
+
+            <p>
+                <label for="rol">Rol:</label>
+                <select id="rol" name="rol" required>
+                    <option value="">-- Seleccione --</option>
+                    <option value="Empleado">Empleado</option>
+                    <option value="Proveedor">Proveedor</option>
+                    <option value="Cliente">Cliente</option>
+                </select>
+            </p>
+            
+            <p>
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+            </p>
+        </fieldset>
+
+        <br>
+        <button type="submit">Guardar Registro de Persona</button>
+    </form>
+
+</body>
+</html>
