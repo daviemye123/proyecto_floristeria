@@ -6,4 +6,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),  # Tu vista principal
+    path('master/', views.master_view, name='master'),
 ] 

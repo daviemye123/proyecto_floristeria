@@ -172,3 +172,19 @@ cython_debug/
 .idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+# Entorno virtual
+venv/
+env/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+
+# Base de datos (si no quieres subir tus datos locales)
+db.sqlite3
+
+# Archivos estáticos recolectados
+staticfiles/
+
+# Carpetas de IDEs
+.vscode/
