@@ -247,6 +247,64 @@ body {
     gap: 30px;
 }
 
+.menu-column {
+    padding-top: 120px; /* Empuja todo el contenido de la columna hacia abajo */
+}
+
+@media (max-width: 768px) {
+    .menu-column {
+        padding-top: 20px;
+    }
+}
+/* Contenedor del dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* El menú que está oculto por defecto */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fffafa;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1000;
+    top: 100%; /* Aparece justo debajo */
+    left: 0;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 0;
+}
+
+/* Estilo de los enlaces dentro del desplegable */
+.dropdown-content a {
+    color: #4a4a4a;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Cambio de color al pasar el mouse por las opciones */
+.dropdown-content a:hover {
+    background-color: #b5c1a5; /* Tu verde oliva */
+    color: white;
+}
+
+/* MOSTRAR EL MENÚ AL PASAR EL MOUSE */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para el trigger para que no se vea como enlace azul */
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
 .neu-button {
     background: var(--bg-color);
     padding: 25px 35px;
@@ -343,10 +401,35 @@ body {
         gap: 50px;
     }
 }
+/* Esta clase la pondremos y quitaremos con JS */
+.dropdown-content.show {
+    display: block !important;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+    }
+
+    /* Mostrar menú cuando tenga la clase `.open` (controlado por JS) */
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: var(--bg-color);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 15px 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        z-index: 100;
     }
     
     .back-text {

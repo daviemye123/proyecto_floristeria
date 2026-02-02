@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "bootstrap5",
     "usuarios",
     "persona",
-    "stock",
+    "categoria",
+    
 ]
 
 MIDDLEWARE = [

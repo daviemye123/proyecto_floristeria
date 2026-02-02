@@ -6,35 +6,48 @@
 <header class="main-header">
     <div class="header-container">
         <div class="logo-section">
+            <a href="/" > 
             <img src="{% static 'img/logo_new.png' %}" alt="Arte & Estilos" class="logo-img">
+            </a>
         </div>
-
         <nav class="nav-links">
-            <a href="/" class="nav-item active">
-                <span class="nav-icon">✦</span>
-                <span class="nav-text">INICIO</span>
-            </a>
-            <a href="#" class="nav-item">
-                <img src="{% static 'img/icon-compra.png' %}" class="nav-img-icon" alt="Compra">
-                <span class="nav-text">COMPRA</span>
-            </a>
-            <a href="#" class="nav-item">
-                <img src="{% static 'img/icon-venta.png' %}" class="nav-img-icon" alt="Venta">
-                <span class="nav-text">VENTA</span>
-            </a>
-            <a href="#" class="nav-item">
-                <img src="{% static 'img/icon-categoria.png' %}" class="nav-img-icon" alt="Categoría">
-                <span class="nav-text">CATEGORIA</span>
-            </a>
-            <a href="#" class="nav-item">
-                <img src="{% static 'img/icon-producto.png' %}" class="nav-img-icon" alt="Producto">
-                <span class="nav-text">PRODUCTO</span>
-            </a>
-            <a href="#" class="nav-item">
-                <img src="{% static 'img/icon-stock.png' %}" class="nav-img-icon" alt="Stock">
-                <span class="nav-text">STOCK</span>
-            </a>
-        </nav>
+    
+    <div class="nav-item dropdown">
+        <div class="dropdown-trigger">
+            <img src="{% static 'img/compra.png' %}" class="nav-img-icon" alt="Compra">
+            <span class="nav-text">COMPRA</span>
+        </div>
+        <div class="dropdown-content">
+            <a href="#">• ORDEN DE COMPRA</a>
+            <a href="#">• CREAR COMPRA</a>
+            <a href="#">• PROVEEDORES</a>
+        </div>
+    </div>
+
+    <div class="nav-item dropdown">
+        <div class="dropdown-trigger">
+            <img src="{% static 'img/producto.png' %}" class="nav-img-icon" alt="Producto">
+            <span class="nav-text">PRODUCTO</span>
+        </div>
+        <div class="dropdown-content">
+            <a href="{% url 'categorias' %}">• CATEGORIA</a>
+            <a href="#">• PRODUCTOS</a>
+            <a href="#">• ARREGLOS</a>
+        </div>
+    </div>
+
+    <div class="nav-item dropdown">
+        <div class="dropdown-trigger">
+            <span class="nav-text">PERSONA</span>
+        </div>
+        <div class="dropdown-content">
+            <a href="#">• PROVEEDORES</a>
+            <a href="#">• CLIENTES</a>
+            <a href="#">• EMPLEADOS</a>
+        </div>
+    </div>
+</nav>
+
 
         <div class="header-right">
             <span class="back-text">REGRESAR AL<br>INICIO</span>
@@ -96,9 +109,9 @@
         </section>
 
         <section class="menu-column">
-            <a href="#" class="neu-button">
+            <a href="#" class="neu-button orders-button">
                 <div class="neu-text">
-                    <span class="main-txt">ORDENES</span>
+                    <span class="main-txt">ARREGLOS</span>
                     <span class="sub-txt">PENDIENTES</span>
                 </div>
                 <div class="icon-wrapper">
@@ -109,25 +122,13 @@
                 </div>
             </a>
 
-            <a href="#" class="neu-button">
-                <div class="neu-text">
-                    <span class="main-txt">VENTAS DEL DÍA</span>
-                    {% if ventas_dia_total %}
-                    <span class="sub-txt">${{ ventas_dia_total|floatformat:0 }}</span>
-                    {% endif %}
-                </div>
-                <img src="{% static 'img/icon-sales.png' %}" alt="Sales">
-            </a>
-
-            <a href="#" class="neu-button">
-                <div class="neu-text">
-                    <span class="main-txt">CALENDARIO</span>
-                </div>
-                <img src="{% static 'img/icon-calendar.png' %}" alt="Calendar">
-            </a>
+            
         </section>
 
     </div>
 </main>
 
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/navbar.js' %}"></script>
 {% endblock %}

@@ -1,32 +1,50 @@
-// static/js/master.js
-
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Seleccionamos todos los botones que activan el menú
-    const triggers = document.querySelectorAll('.dropdown-trigger');
+    const dropdowns = document.querySelectorAll('.dropdown');
 
-    triggers.forEach(trigger => {
+    dropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('.dropdown-trigger');
+        const menu = dropdown.querySelector('.dropdown-content');
+
+        if (!trigger || !menu) return;
+
         trigger.addEventListener('click', function(e) {
-            // Evitamos que el clic cierre el menú inmediatamente
+            e.preventDefault(); // Evita que el enlace recargue la página
             e.stopPropagation();
             
-            const parent = this.parentElement;
-
             // Cerramos otros menús abiertos para que solo haya uno a la vez
-            document.querySelectorAll('.nav-item-container').forEach(container => {
-                if (container !== parent) {
-                    container.classList.remove('active');
-                }
+            document.querySelectorAll('.dropdown-content').forEach(otherMenu => {
+                if (otherMenu !== menu) otherMenu.classList.remove('show');
             });
 
-            // Alternamos la clase 'active' en el contenedor actual
-            parent.classList.toggle('active');
+            // Alternamos el menú actual
+            menu.classList.toggle('show');
         });
     });
 
-    // 2. Cerrar el menú si el usuario hace clic fuera de él
-    document.addEventListener('click', function() {
-        document.querySelectorAll('.nav-item-container').forEach(container => {
-            container.classList.remove('active');
-        });
+    // Cerrar el menú si el usuario hace clic fuera de él
+    window.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-content').forEach(menu => {
+                menu.classList.remove('show');
+            });
+        }
     });
+
+    // ===== Menu burger (mobile) =====
+    const burger = document.querySelector('.menu-burger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (burger && navLinks) {
+        burger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navLinks.classList.toggle('open');
+        });
+
+        // Close nav when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.menu-burger')) {
+                navLinks.classList.remove('open');
+            }
+        });
+    }
 });
