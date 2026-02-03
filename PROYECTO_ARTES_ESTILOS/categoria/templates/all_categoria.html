@@ -2,53 +2,32 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'categoria/css/all.css' %}">
 {% endblock %}
 
 {% block content %}
+<main class="container-fluid py-5">
+    <div class="header-section mb-5 text-center">
+        <h1 class="display-4 fw-bold">CATEGORÍAS</h1>
+    </div>
 
-<main class="main-content">
-    <div class="container table-wrapper">
-        <div class="table-header-row">
-            <h1 class="page-title">CATEGORÍAS</h1>
-            <a href="#" class="btn-add">
-                <span class="nav-icon">+</span> NUEVA CATEGORÍA
-            </a>
+    <div class="categories-grid">
+        {% for categoria in categorias %}
+        <div class="category-card">
+            <div class="category-image">
+                {% if categoria.imagen %}
+                    <img src="{{ categoria.imagen.url }}" alt="{{ categoria.nombre }}">
+                {% else %}
+                    <img src="{% static 'images/default-flower.jpg' %}" alt="Default">
+                {% endif %}
+            </div>
+            <div class="category-info">
+                <h2 class="category-name">{{ categoria.nombre|upper }}</h2>
+            </div>
         </div>
-
-        <div class="neu-table-container">
-            <table class="neu-table">
-                <thead>
-                    <tr>
-                        <th>NOMBRE</th>
-                        <th>DESCRIPCIÓN</th>
-                        <th>ESTADO</th>
-                        <th>ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for categoria in categorias %}
-                    <tr>
-                        <td class="font-bold">{{ categoria.nombre|upper }}</td>
-                        <td>{{ categoria.descripcion }}</td>
-                        <td>
-                            <span class="status-badge {% if categoria.estado %}active{% else %}inactive{% endif %}">
-                                {% if categoria.estado %}ACTIVO{% else %}INACTIVO{% endif %}
-                            </span>
-                        </td>
-                        <td class="actions-cell">
-                            <button class="action-btn edit" title="Editar">✏️</button>
-                            <button class="action-btn delete" title="Eliminar">🗑️</button>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="4" style="text-align: center; padding: 40px;">No hay categorías registradas.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        {% empty %}
+        <p class="text-center">No hay categorías disponibles.</p>
+        {% endfor %}
     </div>
 </main>
 {% endblock %}

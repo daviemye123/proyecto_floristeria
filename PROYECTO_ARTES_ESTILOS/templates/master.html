@@ -3,63 +3,6 @@
 
 {% block content %}
 
-<header class="main-header">
-    <div class="header-container">
-        <div class="logo-section">
-            <a href="/" > 
-            <img src="{% static 'img/logo_new.png' %}" alt="Arte & Estilos" class="logo-img">
-            </a>
-        </div>
-        <nav class="nav-links">
-    
-    <div class="nav-item dropdown">
-        <div class="dropdown-trigger">
-            <img src="{% static 'img/compra.png' %}" class="nav-img-icon" alt="Compra">
-            <span class="nav-text">COMPRA</span>
-        </div>
-        <div class="dropdown-content">
-            <a href="#">• ORDEN DE COMPRA</a>
-            <a href="#">• CREAR COMPRA</a>
-            <a href="#">• PROVEEDORES</a>
-        </div>
-    </div>
-
-    <div class="nav-item dropdown">
-        <div class="dropdown-trigger">
-            <img src="{% static 'img/producto.png' %}" class="nav-img-icon" alt="Producto">
-            <span class="nav-text">PRODUCTO</span>
-        </div>
-        <div class="dropdown-content">
-            <a href="{% url 'categorias' %}">• CATEGORIA</a>
-            <a href="#">• PRODUCTOS</a>
-            <a href="#">• ARREGLOS</a>
-        </div>
-    </div>
-
-    <div class="nav-item dropdown">
-        <div class="dropdown-trigger">
-            <span class="nav-text">PERSONA</span>
-        </div>
-        <div class="dropdown-content">
-            <a href="#">• PROVEEDORES</a>
-            <a href="#">• CLIENTES</a>
-            <a href="#">• EMPLEADOS</a>
-        </div>
-    </div>
-</nav>
-
-
-        <div class="header-right">
-            <span class="back-text">REGRESAR AL<br>INICIO</span>
-            <button class="menu-burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </div>
-</header>
-
 <main class="main-content">
     <div class="container account-wrapper">
         
@@ -115,7 +58,19 @@
                     <span class="sub-txt">PENDIENTES</span>
                 </div>
                 <div class="icon-wrapper">
-                    <img src="{% static 'img/icon-orders.png' %}" alt="Orders">
+                    <img src="{% static 'img/apuro.png' %}" alt="Orders">
+                    {% if ordenes_pendientes_count > 0 %}
+                    <span class="badge-count">{{ ordenes_pendientes_count }}</span>
+                    {% endif %}
+                </div>
+            </a>
+            <a href="#" class="neu-button orders-button">
+                <div class="neu-text">
+                    <span class="main-txt">USUARIO</span>
+                    <span class="sub-txt">AGREGAR NUEVOS USUARIOS</span>
+                </div>
+                <div class="icon-wrapper">
+                    <img src="{% static 'img/usuarios.png' %}" alt="Orders">
                     {% if ordenes_pendientes_count > 0 %}
                     <span class="badge-count">{{ ordenes_pendientes_count }}</span>
                     {% endif %}
